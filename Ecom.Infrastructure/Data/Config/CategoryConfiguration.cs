@@ -14,8 +14,8 @@ namespace Ecom.Infrastructure.Data.Config
                 new Category
                 {
                     Id = 1,
-                    Name = "Test",
-                    Description = "Test",
+                    Name = "Test for seeding",
+                    Description = "Her is description for seeding test",
                 });
         }
     }

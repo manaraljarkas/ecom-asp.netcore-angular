@@ -15,9 +15,9 @@ namespace Ecom.Infrastructure.Data.Config
                 new Product
                 {
                     Id = 1,
-                    Name = "Product test",
-                    Description = "This is description for this product",
-                    Price = 100,
+                    Name = "Product seeding test",
+                    Description = "This is description for seeding test data.",
+                    Price = 1000,
                     CategoryId = 1,
                 });
         }

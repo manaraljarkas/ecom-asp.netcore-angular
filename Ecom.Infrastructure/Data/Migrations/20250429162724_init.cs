@@ -66,6 +66,16 @@ namespace Ecom.Infrastructure.Data.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
+            migrationBuilder.InsertData(
+                table: "Categories",
+                columns: new[] { "Id", "Description", "Name" },
+                values: new object[] { 1, "Her is description for seeding test", "Test for seeding" });
+
+            migrationBuilder.InsertData(
+                table: "Products",
+                columns: new[] { "Id", "CategoryId", "Description", "Name", "Price" },
+                values: new object[] { 1, 1, "This is description for seeding test data.", "Product seeding test", 1000m });
+
             migrationBuilder.CreateIndex(
                 name: "IX_Photos_ProductId",
                 table: "Photos",

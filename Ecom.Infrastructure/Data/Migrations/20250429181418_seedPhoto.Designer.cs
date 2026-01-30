@@ -11,8 +11,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Ecom.Infrastructure.Data.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20250423175920_seedData")]
-    partial class seedData
+    [Migration("20250429181418_seedPhoto")]
+    partial class seedPhoto
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -49,8 +49,8 @@ namespace Ecom.Infrastructure.Data.Migrations
                         new
                         {
                             Id = 1,
-                            Description = "Test",
-                            Name = "Test"
+                            Description = "Her is description for seeding test",
+                            Name = "Test for seeding"
                         });
                 });
 
@@ -74,6 +74,14 @@ namespace Ecom.Infrastructure.Data.Migrations
                     b.HasIndex("ProductId");
 
                     b.ToTable("Photos");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            ImageName = "seeding photo test",
+                            ProductId = 1
+                        });
                 });
 
             modelBuilder.Entity("Ecom.Core.Entities.Product.Product", b =>
@@ -109,37 +117,30 @@ namespace Ecom.Infrastructure.Data.Migrations
                         {
                             Id = 1,
                             CategoryId = 1,
-                            Description = "This is description for this product",
-                            Name = "Product test",
-                            Price = 100m
+                            Description = "This is description for seeding test data.",
+                            Name = "Product seeding test",
+                            Price = 1000m
                         });
                 });
 
             modelBuilder.Entity("Ecom.Core.Entities.Product.Photo", b =>
                 {
-                    b.HasOne("Ecom.Core.Entities.Product.Product", "Product")
+                    b.HasOne("Ecom.Core.Entities.Product.Product", null)
                         .WithMany("Photos")
                         .HasForeignKey("ProductId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-
-                    b.Navigation("Product");
                 });
 
             modelBuilder.Entity("Ecom.Core.Entities.Product.Product", b =>
                 {
                     b.HasOne("Ecom.Core.Entities.Product.Category", "Category")
-                        .WithMany("Products")
+                        .WithMany()
                         .HasForeignKey("CategoryId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("Category");
-                });
-
-            modelBuilder.Entity("Ecom.Core.Entities.Product.Category", b =>
-                {
-                    b.Navigation("Products");
                 });
 
             modelBuilder.Entity("Ecom.Core.Entities.Product.Product", b =>
